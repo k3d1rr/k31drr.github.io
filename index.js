@@ -1,4 +1,8 @@
-const introSection = document.getElementById('intro-section');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('index.js is connected and ready!');
+  
+
+    const introSection = document.getElementById('intro-section');
       const mainWebsiteContentWrapper = document.getElementById('main-website-content-wrapper');
       const shopButton = document.getElementById('shopButton');
       const transitionOverlay = document.getElementById('transitionOverlay');
@@ -625,7 +629,20 @@ const introSection = document.getElementById('intro-section');
           const userLastName = localStorage.getItem('userLastName') || '';
 
           switch (category) {
-              case 'general'
+              case 'general':
+                  // Add code for 'general' settings here, or return an empty string if not implemented
+                  html = `
+                      <div>
+                          <label for="general-first-name">First Name:</label>
+                          <input id="general-first-name" type="text" value="${userFirstName}" class="input-field" />
+                          <label for="general-last-name">Last Name:</label>
+                          <input id="general-last-name" type="text" value="${userLastName}" class="input-field" />
+                          <button id="save-general-settings" class="settings-save-btn">Save</button>
+                      </div>
+                  `;
+                  break;
+          }
+      }
 
     function addSettingsEventListeners() {
           document.getElementById('save-general-settings')?.addEventListener('click', () => {
@@ -924,10 +941,13 @@ const introSection = document.getElementById('intro-section');
 
         window.addEventListener('resize', () => {
             const currentPage = document.querySelector('#main-website-content-wrapper > section.active-page');
-            if (currentPage) {
-                if (window.innerWidth >= 768) {
-                    updateNavIndicator(currentPage.id);
-                }
+            if (currentPage && window.innerWidth >= 768) {
+                updateNavIndicator(currentPage.id);
             }
         });
-    }
+
+        // Initialize animations
+        splitAndAnimateLetters('mainTagline', 1.5);
+      }
+      // <-- Add this closing brace for DOMContentLoaded
+    });
