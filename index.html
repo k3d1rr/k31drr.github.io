@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Ultre
-  </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
-  <style>
-   * {
+  <head>
+    
+    <meta charset="UTF-8" />
+    <title>Ultre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -53,7 +53,6 @@
 
       .transition-overlay.active {
         opacity: 1;
-        visibility: visible;
       }
 
       /* Desktop Navigation (Bottom Bar) */
@@ -291,11 +290,7 @@
         opacity: 0;
         transform: translateY(20px);
         display: inline-block;
-        animation: letterFadeIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      }
-
-      .animated-letter.space {
-          width: 0.25em;
+        animation: letterFadeIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
       }
 
       @keyframes letterFadeIn {
@@ -340,8 +335,18 @@
         margin-top: 30px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        opacity: 0;
-        animation: fadeInBlock 0.8s ease-out forwards;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .shop-button:hover {
@@ -1044,503 +1049,533 @@
             padding-bottom: 60px;
         }
       }
-  </style>
-  <script defer="True" src="index.js">
-  </script>
- </head>
- <body>
-  <div class="transition-overlay" id="transitionOverlay">
-  </div>
-  <div id="message-box" role="alert">
-   <i class="fas fa-check-circle">
-   </i>
-   <span id="message-text">
-   </span>
-  </div>
-  <!-- Hamburger Menu Icon (Mobile Only) -->
-  <div class="hamburger-menu-icon" id="hamburgerIcon">
-   <i class="fas fa-bars">
-   </i>
-  </div>
-  <!-- Profile Menu Container -->
-  <div class="profile-menu-container">
-   <div class="profile-icon">
-    <i class="fas fa-user-circle">
-    </i>
-   </div>
-   <div class="profile-dropdown">
-    <a class="dropdown-item" href="#sign-in-main">
-     Sign In
-    </a>
-    <a class="dropdown-item" href="#sign-up-main">
-     Sign Up
-    </a>
-   </div>
-  </div>
-  <!-- Mobile Navigation Overlay -->
-  <div id="mobile-nav-overlay">
-   <button class="close-btn" id="mobileNavCloseBtn">
-    ×
-   </button>
-   <ul>
-    <li class="mobile-nav-item" data-page-id="home-main">
-     <a href="#home-main">
-      Home
-     </a>
-    </li>
-    <li class="mobile-nav-item" data-page-id="shop-page">
-     <a href="#shop-page">
-      Shop
-     </a>
-    </li>
-    <li class="mobile-nav-item" data-page-id="about-us-main">
-     <a href="#about-us-main">
-      About Us
-     </a>
-    </li>
-    <li class="mobile-nav-item" data-page-id="cart-main">
-     <a href="#cart-main">
-      Cart
-     </a>
-    </li>
-    <li class="mobile-nav-item" data-page-id="contact-main">
-     <a href="#contact-main">
-      Contact
-     </a>
-    </li>
-    <li class="mobile-nav-item" data-page-id="support-main" id="mobile-support-nav-item">
-     <a href="#support-main">
-      Support
-     </a>
-    </li>
-    <li class="mobile-nav-item" data-page-id="settings-main">
-     <a href="#settings-main">
-      Settings
-     </a>
-    </li>
-   </ul>
-  </div>
-  <section id="intro-section">
-   <!-- The logo container now directly animates the image within -->
-   <div class="logo">
-    <img alt="Ultre Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x100/000000/FFFFFF?text=Logo';" src="logo.png"/>
-   </div>
-   <div class="tagline" id="mainTagline">
-    Ultre is coming.
-   </div>
-   <button class="shop-button" id="shopButton" style="animation-delay: 2.8s;">
-    Head to the shop.
-   </button>
-  </section>
-  <div class="hidden-content" id="main-website-content-wrapper">
-   <section class="active-page" id="home-main">
-    <div class="info-title">
-     Welcome to Ultre!
+    </style>
+  </head>
+  <body>
+    <div id="transitionOverlay" class="transition-overlay"></div>
+    <div id="message-box" role="alert">
+      <i class="fas fa-check-circle"></i>
+      <span id="message-text"></span>
     </div>
-    <div class="info-content">
-     Your journey into minimalist style and timeless energy starts here.
-          Explore our collections and discover pieces designed for those who move different.
+
+    <!-- Hamburger Menu Icon (Mobile Only) -->
+    <div class="hamburger-menu-icon" id="hamburgerIcon">
+      <i class="fas fa-bars"></i>
     </div>
-   </section>
-   <section id="shop-page">
-    <div class="info-title">
-     Welcome to the Shop!
-    </div>
-    <div class="w-full max-w-4xl mx-auto p-4" id="shop-content">
-     <div class="text-gray-400 text-lg" id="loading-indicator">
-      Loading items...
-     </div>
-     <div class="text-yellow-400 text-lg my-4" id="status-message">
-     </div>
-     <div class="hidden text-gray-400 text-lg flex flex-col items-center justify-center py-10" id="no-stock-message">
-      <span class="text-6xl mb-4">
-       😔
-      </span>
-      There isn't anything in stock right now, check again soon!
-     </div>
-     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8" id="items-grid">
-     </div>
-    </div>
-   </section>
-   <section id="item-detail-page">
-    <div class="info-title">
-     Product Details
-    </div>
-    <div id="item-detail-page-content">
-     <div class="item-detail-left">
-      <img alt="Product Image" class="item-detail-image" id="detail-item-image" src=""/>
-      <h3 class="item-detail-name" id="detail-item-name">
-      </h3>
-      <p class="item-detail-price" id="detail-item-price">
-      </p>
-      <div class="size-selector w-full max-w-[300px] text-left">
-       <label class="block text-gray-300 font-semibold mb-2" for="item-size">
-        Select Size:
-       </label>
-       <select class="w-full p-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:border-white" id="item-size">
-        <option value="S">
-         Small
-        </option>
-        <option value="M">
-         Medium
-        </option>
-        <option value="L">
-         Large
-        </option>
-        <option value="XL">
-         X-Large
-        </option>
-        <option value="XXL">
-         XX-Large
-        </option>
-       </select>
+
+    <!-- Profile Menu Container -->
+    <div class="profile-menu-container">
+      <div class="profile-icon">
+        <i class="fas fa-user-circle"></i>
       </div>
-      <button class="shop-button w-full" id="detail-add-to-cart-btn">
-       Add to Cart
-      </button>
-     </div>
-     <div class="item-detail-right">
-      <p class="item-detail-description" id="detail-item-description">
-      </p>
-     </div>
+      <div class="profile-dropdown">
+        <a href="#sign-in-main" class="dropdown-item"></a>
+        <a href="#sign-up-main" class="dropdown-item"></a>
+      </div>
     </div>
-    <button class="back-to-shop-btn" id="back-to-shop-btn">
-     ← Back to Shop
-    </button>
-   </section>
-   <section id="about-us-main">
-    <div class="info-title">
-     About Us
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav-overlay">
+      <button class="close-btn" id="mobileNavCloseBtn">&times;</button>
+      <ul>
+        <li data-page-id="home-main" class="mobile-nav-item"><a href="#home-main"></a></li>
+        <li data-page-id="shop-page" class="mobile-nav-item"><a href="#shop-page"></a></li>
+        <li data-page-id="about-us-main" class="mobile-nav-item"><a href="#about-us-main"></a></li>
+        <li data-page-id="cart-main" class="mobile-nav-item"><a href="#cart-main"></a></li>
+        <li data-page-id="contact-main" class="mobile-nav-item"><a href="#contact-main"></a></li>
+        <li data-page-id="support-main" id="mobile-support-nav-item" class="mobile-nav-item"><a href="#support-main"></a></li>
+        <li data-page-id="settings-main" class="mobile-nav-item"><a href="#settings-main"></a></li>
+      </ul>
     </div>
-    <div class="info-content" id="aboutUsContent">
-     Ultre isn’t just a brand — it’s a mindset. Rooted in simplicity, built for the bold.
-          We believe in creating essential pieces that resonate with those who value authenticity and understated strength.
-     <br/>
-     <br/>
-     No loud flex, no trend chasing. Just timeless energy and pieces that bring the "you" out of you.
-          Our designs are inspired by a minimalist aesthetic, focusing on clean lines and versatile pieces that fit seamlessly into any lifestyle.
-     <br/>
-     <br/>
-     Crafted for the ones who move different. Designed to last, not just be seen.
-          We prioritize quality materials and meticulous attention to detail, ensuring every Ultre item stands the test of time.
-     <br/>
-     <br/>
-     We take many minutes and hours out of our days to bring you all the clothing and quality you deserve with a price that can put a smile on your face.
-          Join us on our journey to make a new era of affordable and stylish clothing.
-    </div>
-   </section>
-   <section id="cart-main">
-    <div class="info-title">
-     Your Cart
-    </div>
-    <div class="w-full max-w-4xl mx-auto p-4" id="cart-content">
-     <div class="text-gray-400 text-lg hidden flex flex-col items-center justify-center py-10" id="empty-cart-message">
-      <span class="text-6xl mb-4">
-       🛒
-      </span>
-      Your cart is currently empty. Start shopping to add some Ultre essentials!
-     </div>
-     <div class="space-y-4 text-left" id="cart-items-list">
-     </div>
-     <div class="mt-8 text-right text-2xl font-bold text-white hidden" id="cart-total">
-      Total: $
-      <span id="total-amount">
-       0.00
-      </span>
-     </div>
-     <button class="shop-button hidden w-full mt-8" id="checkout-btn">
-      Proceed to Checkout
-     </button>
-    </div>
-   </section>
-   <section id="contact-main">
-    <div class="info-title">
-     Get in Touch
-    </div>
-    <div class="info-content">
-     We make essentials. Not extras. Wear it like you mean it.
-          For inquiries or collaborations, feel free to reach out to us.
-     <div class="contact-details">
-      Email:
-      <a href="mailto:info@ultre.com">
-       info@ultre.com
-      </a>
-      <br/>
-      Follow us on social media! (Links coming soon)
-     </div>
-    </div>
-   </section>
-   <section id="sign-in-main">
-    <div class="info-title">
-     Sign In
-    </div>
-    <div class="auth-form-container">
-     <div class="error-message hidden" id="signin-error-message">
-     </div>
-     <div>
-      <label for="signin-email">
-       Email:
-      </label>
-      <input id="signin-email" placeholder="your@example.com" required="" type="email"/>
-     </div>
-     <div>
-      <label for="signin-password">
-       Password:
-      </label>
-      <input id="signin-password" placeholder="********" required="" type="password"/>
-     </div>
-     <a class="form-link text-right" href="#">
-      Forgot Password?
-     </a>
-     <button class="shop-button" id="signin-btn">
-      Sign In
-     </button>
-     <p class="text-center text-gray-400 text-sm">
-      Don't have an account?
-      <a class="form-link" href="#sign-up-main">
-       Sign Up
-      </a>
-     </p>
-    </div>
-   </section>
-   <section id="sign-up-main">
-    <div class="info-title">
-     Sign Up
-    </div>
-    <div class="auth-form-container">
-     <div class="error-message hidden" id="signup-error-message">
-     </div>
-     <div>
-      <label for="signup-email">
-       Email:
-      </label>
-      <input id="signup-email" placeholder="your@example.com" required="" type="email"/>
-     </div>
-     <div>
-      <label for="signup-password">
-       Password:
-      </label>
-      <input id="signup-password" placeholder="********" required="" type="password"/>
-     </div>
-     <div>
-      <label for="signup-confirm-password">
-       Confirm Password:
-      </label>
-      <input id="signup-confirm-password" placeholder="********" required="" type="password"/>
-     </div>
-     <button class="shop-button" id="signup-btn">
-      Sign Up
-     </button>
-     <p class="text-center text-gray-400 text-sm">
-      Already have an account?
-      <a class="form-link" href="#sign-in-main">
-       Sign In
-      </a>
-     </p>
-    </div>
-   </section>
-   <section id="onboarding-main">
-    <div class="info-title" id="onboarding-title">
-    </div>
-    <div class="auth-form-container">
-     <div class="error-message hidden" id="onboarding-error-message">
-     </div>
-     <div>
-      <label for="onboarding-first-name">
-       First Name:
-      </label>
-      <input id="onboarding-first-name" placeholder="Your First Name" required="" type="text"/>
-     </div>
-     <div>
-      <label for="onboarding-last-name">
-       Last Name:
-      </label>
-      <input id="onboarding-last-name" placeholder="Your Last Name" required="" type="text"/>
-     </div>
-     <button class="shop-button" id="onboarding-save-btn">
-      Save My Name
-     </button>
-    </div>
-   </section>
-   <section id="support-main">
-    <div class="info-title" id="supportQuestion">
-    </div>
-    <button class="support-option-button quick-easy-btn" id="quickEasyBtn">
-     Quick and Easy (AI)
-    </button>
-    <button class="support-option-button advanced-support-btn" id="advancedSupportBtn">
-     Advanced Support (Mail)
-    </button>
-    <button class="shop-button mt-10" id="backToMainSiteBtn">
-     Head to the Shop
-    </button>
-   </section>
-   <section id="chat-interface">
-    <div class="info-title">
-     Chat with UltreBot!
-    </div>
-    <div id="chat-messages">
-    </div>
-    <div id="chat-input-container">
-     <input id="chat-input" placeholder="Type your message..." type="text"/>
-     <button id="send-chat-btn">
-      Send
-     </button>
-    </div>
-   </section>
-   <section id="settings-main">
-    <div class="info-title">
-     Settings
-    </div>
-    <div class="w-full max-w-7xl mx-auto bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row flex-grow" style="height: calc(100vh - 160px);">
-     <!-- Left Sidebar for Settings Navigation -->
-     <div class="w-full lg:w-1/4 bg-gray-900 border-r border-gray-700 p-6 space-y-2 flex-shrink-0">
-      <h2 class="text-xl font-semibold text-white mb-4">
-       Categories
-      </h2>
-      <nav class="space-y-1">
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="general" href="#">
-        General
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="accessibility" href="#">
-        Accessibility
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="privacy" href="#">
-        Privacy
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="visuals" href="#">
-        Visuals
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="payment-method" href="#">
-        Payment Method
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="notifications" href="#">
-        Notifications
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="security" href="#">
-        Security
-       </a>
-       <a class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md transition duration-200 ease-in-out font-medium settings-nav-link" data-setting-category="integrations" href="#">
-        Integrations
-       </a>
+
+    <section id="intro-section">
+      <!-- The logo container now directly animates the image within -->
+      <div class="logo">
+        <img src="logo.png" alt="Ultre Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x100/000000/FFFFFF?text=Logo';">
+      </div>
+      <div class="tagline" id="mainTagline"></div>
+      <button class="shop-button" id="shopButton"></button>
+    </section>
+
+    <div id="main-website-content-wrapper" class="hidden-content">
+      <section id="home-main" class="active-page">
+        <div class="info-title"></div>
+        <div class="info-content"></div>
+      </section>
+
+      <section id="shop-page">
+        <div class="info-title"></div>
+        <div id="shop-content" class="w-full max-w-4xl mx-auto p-4">
+          <div id="loading-indicator" class="text-gray-400 text-lg"></div>
+          <div id="status-message" class="text-yellow-400 text-lg my-4"></div>
+          <div id="no-stock-message" class="hidden text-gray-400 text-lg flex flex-col items-center justify-center py-10">
+            <span class="text-6xl mb-4"></span>
+          </div>
+          <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"></div>
+        </div>
+      </section>
+
+      <section id="item-detail-page">
+        <div class="info-title"></div>
+        <div id="item-detail-page-content">
+          <div class="item-detail-left">
+            <img id="detail-item-image" src="" alt="Product Image" class="item-detail-image">
+            <h3 id="detail-item-name" class="item-detail-name"></h3>
+            <p id="detail-item-price" class="item-detail-price"></p>
+            <div class="size-selector w-full max-w-[300px] text-left">
+              <label for="item-size" class="block text-gray-300 font-semibold mb-2"></label>
+              <select id="item-size" class="w-full p-2 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:border-white">
+                <option value="S"></option>
+                <option value="M"></option>
+                <option value="L"></option>
+                <option value="XL"></option>
+                <option value="XXL"></option>
+              </select>
+            </div>
+            <button id="detail-add-to-cart-btn" class="shop-button w-full"></button>
+          </div>
+          <div class="item-detail-right">
+            <p id="detail-item-description" class="item-detail-description"></p>
+          </div>
+        </div>
+        <button id="back-to-shop-btn" class="back-to-shop-btn"></button>
+      </section>
+
+      <section id="about-us-main">
+        <div class="info-title"></div>
+        <div class="info-content" id="aboutUsContent"></div>
+      </section>
+
+      <section id="cart-main">
+        <div class="info-title"></div>
+        <div id="cart-content" class="w-full max-w-4xl mx-auto p-4">
+          <div id="empty-cart-message" class="text-gray-400 text-lg hidden flex flex-col items-center justify-center py-10">
+            <span class="text-6xl mb-4"></span>
+          </div>
+          <div id="cart-items-list" class="space-y-4 text-left"></div>
+          <div id="cart-total" class="mt-8 text-right text-2xl font-bold text-white hidden">
+            <span id="total-amount"></span>
+          </div>
+          <button id="checkout-btn" class="shop-button hidden w-full mt-8"></button>
+        </div>
+      </section>
+
+      <section id="contact-main">
+        <div class="info-title"></div>
+        <div class="info-content">
+          <div class="contact-details"></div>
+        </div>
+      </section>
+
+      <section id="sign-in-main">
+        <div class="info-title"></div>
+        <div class="auth-form-container">
+          <div id="signin-error-message" class="error-message hidden"></div>
+          <div>
+            <label for="signin-email"></label>
+            <input type="email" id="signin-email" required>
+          </div>
+          <div>
+            <label for="signin-password"></label>
+            <input type="password" id="signin-password" required>
+          </div>
+          <a href="#" class="form-link text-right"></a>
+          <button id="signin-btn" class="shop-button"></button>
+          <p class="text-center text-gray-400 text-sm">
+            <a href="#sign-up-main" class="form-link"></a>
+          </p>
+        </div>
+      </section>
+
+      <section id="sign-up-main">
+        <div class="info-title"></div>
+        <div class="auth-form-container">
+          <div id="signup-error-message" class="error-message hidden"></div>
+          <div>
+            <label for="signup-email"></label>
+            <input type="email" id="signup-email" required>
+          </div>
+          <div>
+            <label for="signup-password"></label>
+            <input type="password" id="signup-password" required>
+          </div>
+          <div>
+            <label for="signup-confirm-password"></label>
+            <input type="password" id="signup-confirm-password" required>
+          </div>
+          <button id="signup-btn" class="shop-button"></button>
+          <p class="text-center text-gray-400 text-sm">
+            <a href="#sign-in-main" class="form-link"></a>
+          </p>
+        </div>
+      </section>
+
+      <section id="onboarding-main">
+        <div class="info-title" id="onboarding-title"></div>
+        <div class="auth-form-container">
+          <div id="onboarding-error-message" class="error-message hidden"></div>
+          <div>
+            <label for="onboarding-first-name"></label>
+            <input type="text" id="onboarding-first-name" required>
+          </div>
+          <div>
+            <label for="onboarding-last-name"></label>
+            <input type="text" id="onboarding-last-name" required>
+          </div>
+          <button id="onboarding-save-btn" class="shop-button"></button>
+        </div>
+      </section>
+
+      <section id="support-main">
+        <div class="info-title" id="supportQuestion"></div>
+        <button id="quickEasyBtn" class="support-option-button quick-easy-btn"></button>
+        <button id="advancedSupportBtn" class="support-option-button advanced-support-btn"></button>
+        <button id="backToMainSiteBtn" class="shop-button mt-10"></button>
+      </section>
+
+      <section id="chat-interface">
+        <div class="info-title"></div>
+        <div id="chat-messages"></div>
+        <div id="chat-input-container">
+          <input type="text" id="chat-input">
+          <button id="send-chat-btn"></button>
+        </div>
+      </section>
+
+      <section id="settings-main">
+        <div class="info-title"></div>
+        <div class="w-full max-w-7xl mx-auto bg-gray-800 rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row flex-grow">
+          <div class="w-full lg:w-1/4 bg-gray-900 border-r border-gray-700 p-6 space-y-2 flex-shrink-0">
+            <h2 class="text-xl font-semibold text-white mb-4"></h2>
+            <nav class="space-y-1"></nav>
+          </div>
+          <div id="settings-content-container" class="w-full lg:w-3/4 p-6 flex flex-col flex-grow overflow-y-auto">
+            <h2 class="text-2xl font-bold text-white mb-6" id="settings-content-title"></h2>
+            <div id="settings-content-area" class="flex-grow"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        &copy; 2025 Ultre. All rights reserved.
+      </footer>
+
+      <nav>
+        <div id="nav-indicator"></div>
+        <ul>
+          <li data-page-id="home-main" class="main-nav-item"><a href="#home-main"><i class="fas fa-home"></i> Home</a></li>
+          <li data-page-id="shop-page" class="main-nav-item"><a href="#shop-page"><i class="fas fa-store"></i> Shop</a></li>
+          <li data-page-id="about-us-main" class="main-nav-item"><a href="#about-us-main"><i class="fas fa-info-circle"></i> About Us</a></li>
+          <li data-page-id="cart-main" class="main-nav-item"><a href="#cart-main"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+          <li data-page-id="contact-main" class="main-nav-item"><a href="#contact-main"><i class="fas fa-envelope"></i> Contact</a></li>
+          <li data-page-id="support-main" id="support-nav-item"><a href="#support-main"><i class="fas fa-life-ring"></i> Support</a></li>
+          <li data-page-id="settings-main" class="main-nav-item"><a href="#settings-main"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
       </nav>
-     </div>
-     <!-- Right Content Area for Settings -->
-     <div class="w-full lg:w-3/4 p-6 flex flex-col flex-grow overflow-y-auto" id="settings-content-container">
-      <h2 class="text-2xl font-bold text-white mb-6" id="settings-content-title">
-       All Settings
-      </h2>
-      <div class="flex-grow" id="settings-content-area">
-       <!-- All settings sections will be rendered here -->
+    </div>
+
+    <div id="checkout-modal-overlay" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+        <div class="modal-title">Checkout</div>
+        <div class="modal-body">
+          <p class="modal-total">Your Total: $<span id="modal-total-amount">0.00</span></p>
+          <div class="payment-methods text-left">
+            <p class="text-lg font-semibold mb-3">Select Payment Method:</p>
+            <label>
+              <input type="radio" name="payment-method" value="credit-card" checked>
+              <i class="fas fa-credit-card"></i> Credit Card (Simulated)
+            </label>
+            <label>
+              <input type="radio" name="payment-method" value="paypal">
+              <i class="fab fa-paypal"></i> PayPal (Simulated)
+            </label>
+            <label>
+              <input type="radio" name="payment-method" value="apple-pay">
+              <i class="fab fa-apple-pay"></i> Apple Pay (Simulated)
+            </label>
+          </div>
+          <button class="place-order-btn" id="place-order-btn">Place Order</button>
+          <p id="order-confirmation-message" class="text-green-400 text-lg mt-4 hidden">Thank You for your order!</p>
+        </div>
       </div>
-     </div>
     </div>
-   </section>
-   <footer>
-    © 2025 Ultre. All rights reserved.
-   </footer>
-   <nav>
-    <div id="nav-indicator">
+
+    <script src="index.js"></script>
+    <script src="nextindex.js"></script>
+  </body>
+</html>
+                  <h2 class="text-2xl font-bold text-white mb-6" id="settings-content-title">All Settings</h2>
+                  <div id="settings-content-area" class="flex-grow">
+                      <!-- All settings sections will be rendered here -->
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <footer>
+        &copy; 2025 Ultre. All rights reserved.
+      </footer>
+
+      <nav>
+        <div id="nav-indicator"></div>
+        <ul>
+          <li data-page-id="home-main" class="main-nav-item"><a href="#home-main"><i class="fas fa-home"></i> Home</a></li>
+          <li data-page-id="shop-page" class="main-nav-item"><a href="#shop-page"><i class="fas fa-store"></i> Shop</a></li>
+          <li data-page-id="about-us-main" class="main-nav-item"><a href="#about-us-main"><i class="fas fa-info-circle"></i> About Us</a></li>
+          <li data-page-id="cart-main" class="main-nav-item"><a href="#cart-main"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+          <li data-page-id="contact-main" class="main-nav-item"><a href="#contact-main"><i class="fas fa-envelope"></i> Contact</a></li>
+          <li data-page-id="support-main" id="support-nav-item"><a href="#support-main"><i class="fas fa-life-ring"></i> Support</a></li>
+          <li data-page-id="settings-main" class="main-nav-item"><a href="#settings-main"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+      </nav>
     </div>
-    <ul>
-     <li class="main-nav-item" data-page-id="home-main">
-      <a href="#home-main">
-       <i class="fas fa-home">
-       </i>
-       Home
-      </a>
-     </li>
-     <li class="main-nav-item" data-page-id="shop-page">
-      <a href="#shop-page">
-       <i class="fas fa-store">
-       </i>
-       Shop
-      </a>
-     </li>
-     <li class="main-nav-item" data-page-id="about-us-main">
-      <a href="#about-us-main">
-       <i class="fas fa-info-circle">
-       </i>
-       About Us
-      </a>
-     </li>
-     <li class="main-nav-item" data-page-id="cart-main">
-      <a href="#cart-main">
-       <i class="fas fa-shopping-cart">
-       </i>
-       Cart
-      </a>
-     </li>
-     <li class="main-nav-item" data-page-id="contact-main">
-      <a href="#contact-main">
-       <i class="fas fa-envelope">
-       </i>
-       Contact
-      </a>
-     </li>
-     <li data-page-id="support-main" id="support-nav-item">
-      <a href="#support-main">
-       <i class="fas fa-life-ring">
-       </i>
-       Support
-      </a>
-     </li>
-     <li class="main-nav-item" data-page-id="settings-main">
-      <a href="#settings-main">
-       <i class="fas fa-cog">
-       </i>
-       Settings
-      </a>
-     </li>
-    </ul>
-   </nav>
-  </div>
-  <div class="modal-overlay" id="checkout-modal-overlay">
-   <div class="modal-content">
-    <button class="modal-close-btn" id="modal-close-btn">
-     ×
-    </button>
-    <div class="modal-title">
-     Checkout
+
+    <div id="checkout-modal-overlay" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+        <div class="modal-title">Checkout</div>
+        <div class="modal-body">
+          <p class="modal-total">Your Total: $<span id="modal-total-amount">0.00</span></p>
+          <div class="payment-methods text-left">
+            <p class="text-lg font-semibold mb-3">Select Payment Method:</p>
+            <label>
+              <input type="radio" name="payment-method" value="credit-card" checked>
+              <i class="fas fa-credit-card"></i> Credit Card (Simulated)
+            </label>
+            <label>
+              <input type="radio" name="payment-method" value="paypal">
+              <i class="fab fa-paypal"></i> PayPal (Simulated)
+            </label>
+            <label>
+              <input type="radio" name="payment-method" value="apple-pay">
+              <i class="fab fa-apple-pay"></i> Apple Pay (Simulated)
+            </label>
+          </div>
+          <button class="place-order-btn" id="place-order-btn">Place Order</button>
+          <p id="order-confirmation-message" class="text-green-400 text-lg mt-4 hidden">Thank You for your order!</p>
+        </div>
+      </div>
     </div>
-    <div class="modal-body">
-     <p class="modal-total">
-      Your Total: $
-      <span id="modal-total-amount">
-       0.00
-      </span>
-     </p>
-     <div class="payment-methods text-left">
-      <p class="text-lg font-semibold mb-3">
-       Select Payment Method:
-      </p>
-      <label>
-       <input checked="" name="payment-method" type="radio" value="credit-card"/>
-       <i class="fas fa-credit-card">
-       </i>
-       Credit Card (Simulated)
-      </label>
-      <label>
-       <input name="payment-method" type="radio" value="paypal"/>
-       <i class="fab fa-paypal">
-       </i>
-       PayPal (Simulated)
-      </label>
-      <label>
-       <input name="payment-method" type="radio" value="apple-pay"/>
-       <i class="fab fa-apple-pay">
-       </i>
-       Apple Pay (Simulated)
-      </label>
-     </div>
-     <button class="place-order-btn" id="place-order-btn">
-      Place Order
-     </button>
-     <p class="text-green-400 text-lg mt-4 hidden" id="order-confirmation-message">
-      Thank You for your order!
-     </p>
-    </div>
-   </div>
-  </div>
- </body>
+
+    <script src="index.js"></script>
+    <script src="nextindex.js"></script>
+  </body>
+</html>
+      
+                  <img src="${imageUrl}" alt="${item.title || item.name}" class="w-full h-48 object-cover">
+                  <div class="p-4 flex flex-col justify-between flex-grow">
+                    <h3 class="text-xl font-semibold text-white mb-2">${item.title || item.name}</h3>
+                    <p class="text-gray-300 text-lg mb-4">$${price}</p>
+                    <button class="add-to-cart-btn mt-auto bg-white text-gray-900 font-bold py-2 px-4 rounded-md hover:bg-gray-200 transition-colors" data-item-id="${item.id}" data-item-name="${item.title || item.name}" data-item-price="${item.variants && item.variants.length > 0 ? item.variants[0].price : (item.price * 100)}" data-item-image="${imageUrl}">Add to Cart</button>
+                  </div>
+                
+              <div class="flex items-center space-x-4">
+                <img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md">
+                <div>
+                  <h4 class="text-lg font-semibold text-white">${item.name}</h4>
+                  <p class="text-gray-400">$${itemPriceDisplay} x ${item.quantity} ${item.size ? `(Size: ${item.size})` : ''} = $${itemTotal}</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button class="quantity-btn bg-gray-700 text-white px-3 py-1 rounded-md hover:bg-gray-600" data-cart-key="${cartKey}" data-change="-1">-</button>
+                <span class="text-white">${item.quantity}</span>
+                <button class="quantity-btn bg-gray-700 text-white px-3 py-1 rounded-md hover:bg-gray-600" data-cart-key="${cartKey}" data-change="1">+</button>
+                <button class="remove-from-cart-btn bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700" data-cart-key="${cartKey}">Remove</button>
+              </div>
+            `;
+            <i class="fas fa-robot"></i>';
+             <div class="dot-pulse"></div><div class="dot-pulse"></div><div class="dot-pulse"></div>';
+            <i class="fas fa-robot"></i>';
+           `
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Basic settings for your account and site experience.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <div>
+                                  <label for="general-first-name" class="block text-sm font-medium text-gray-300 mb-1">First Name</label>
+                                  <input type="text" id="general-first-name" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white" value="${userFirstName}">
+                              </div>
+                              <div>
+                                  <label for="general-last-name" class="block text-sm font-medium text-gray-300 mb-1">Last Name</label>
+                                  <input type="text" id="general-last-name" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white" value="${userLastName}">
+                              </div>
+                              <div>
+                                  <label for="language-select" class="block text-sm font-medium text-gray-300 mb-1">Language</label>
+                                  <select id="language-select" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white">
+                                      <option value="en">English</option>
+                                      <option value="es">Español</option>
+                                      <option value="fr">Français</option>
+                                  </select>
+                              </div>
+                              <div>
+                                  <label for="timezone-select" class="block text-sm font-medium text-gray-300 mb-1">Time Zone</label>
+                                  <select id="timezone-select" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white">
+                                      <option value="utc">UTC</option>
+                                      <option value="est">Eastern Standard Time</option>
+                                      <option value="pst">Pacific Standard Time</option>
+                                      <option value="dubai">Dubai (GMT+4)</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <button id="save-general-settings" class="shop-button mt-6 w-full">Save General Settings</button>
+                      </div>
+                  
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Adjust settings for better accessibility.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">High Contrast Mode</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="high-contrast-toggle" class="sr-only peer">
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Enable Screen Reader Support</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="screen-reader-toggle" class="sr-only peer">
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                              <div>
+                                  <label for="font-size-select" class="block text-sm font-medium text-gray-300 mb-1">Font Size</label>
+                                  <select id="font-size-select" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white">
+                                      <option value="small">Small</option>
+                                      <option value="medium" selected>Medium</option>
+                                      <option value="large">Large</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <button id="save-accessibility-settings" class="shop-button mt-6 w-full">Save Accessibility Settings</button>
+                      </div>
+                  
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Manage your data and privacy preferences.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Allow Personalized Ads</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="personalized-ads-toggle" class="sr-only peer" checked>
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Share Anonymous Usage Data</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="share-usage-data-toggle" class="sr-only peer">
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                              <button id="download-data-btn" class="shop-button mt-6 w-full bg-blue-600 hover:bg-blue-700">Download My Data</button>
+                          </div>
+                      </div>
+                  
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Customize the look and feel of the site.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <div>
+                                  <label for="theme-select" class="block text-sm font-medium text-gray-300 mb-1">Theme</label>
+                                  <select id="theme-select" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white">
+                                      <option value="dark">Dark (Default)</option>
+                                      <option value="light">Light</option>
+                                      <option value="system">System Preference</option>
+                                  </select>
+                              </div>
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Enable Animations</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="animations-toggle" class="sr-only peer" checked>
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                          </div>
+                          <button id="save-visual-settings" class="shop-button mt-6 w-full">Save Visual Settings</button>
+                      </div>
+                 
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Manage your saved payment methods.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <p class="text-sm text-gray-400">No payment methods are currently saved for your account.</p>
+                              <h3 class="text-lg font-semibold text-white mt-6 mb-3">Add New Payment Method</h3>
+                              <div>
+                                  <label for="card-number" class="block text-sm font-medium text-gray-300 mb-1">Card Number</label>
+                                  <input type="text" id="card-number" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white" placeholder="**** **** **** ****">
+                              </div>
+                              <div class="flex gap-4">
+                                  <div class="flex-1">
+                                      <label for="expiry-date" class="block text-sm font-medium text-gray-300 mb-1">Expiry Date (MM/YY)</label>
+                                      <input type="text" id="expiry-date" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white" placeholder="MM/YY">
+                                  </div>
+                                  <div class="flex-1">
+                                      <label for="cvv" class="block text-sm font-medium text-gray-300 mb-1">CVV</label>
+                                      <input type="text" id="cvv" class="w-full p-2 rounded-md bg-gray-600 text-white border border-gray-500 focus:outline-none focus:border-white" placeholder="***">
+                                  </div>
+                              </div>
+                          </div>
+                          <button id="save-payment-method" class="shop-button mt-6 w-full bg-blue-600 hover:bg-blue-700">Save Payment Method</button>
+                      </div>
+                 
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Control how you receive notifications.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Email Notifications</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="email-notifications-toggle" class="sr-only peer" checked>
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Promotional Offers</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="promotional-offers-toggle" class="sr-only peer">
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                              <div class="flex items-center justify-between">
+                                  <span class="text-sm font-medium text-gray-300">Push Notifications</span>
+                                  <label class="relative inline-flex items-center cursor-pointer">
+                                      <input type="checkbox" id="push-notifications-toggle" class="sr-only peer">
+                                      <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                  </label>
+                              </div>
+                          </div>
+                          <button id="save-notification-settings" class="shop-button mt-6 w-full">Save Notification Settings</button>
+                      </div>
+                  
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Manage your account security settings.</p>
+                          <div class="mt-4 space-y-4 text-left">
+                              <button id="change-password-btn" class="shop-button w-full bg-red-600 hover:bg-red-700">Change Password</button>
+                              <button id="two-factor-auth-btn" class="shop-button w-full bg-yellow-600 hover:bg-yellow-700">Enable Two-Factor Authentication</button>
+                              <div class="mt-6">
+                                  <h3 class="text-lg font-semibold text-white mb-2">Login Activity</h3>
+                                  <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                                      <li>Last login: July 21, 2025 from Chrome on Windows (Dubai, UAE)</li>
+                                      <li>Previous login: July 20, 2025 from Safari on iOS (London, UK)</li>
+                                  </ul>
+                                  <button id="view-all-activity-btn" class="shop-button mt-4 bg-gray-600 hover:bg-gray-700 w-full">View All Activity</button>
+                              </div>
+                          </div>
+                      </div>
+                  
+                      <div class="bg-gray-700 border border-gray-600 text-gray-200 p-4 rounded-lg">
+                          <p class="font-semibold mb-4">Connect or disconnect third-party services.</p>
+                          <p class="text-sm text-gray-400 mt-2">No integrations are currently available. Check back soon for exciting new connections!</p>
+                          <div class="mt-4 space-y-3">
+                              <div class="flex items-center justify-between p-3 bg-gray-600 rounded-md">
+                                  <span class="text-white font-medium">Shopify</span>
+                                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 transition-colors">Connect</button>
+                              </div>
+                              <div class="flex items-center justify-between p-3 bg-gray-600 rounded-md">
+                                  <span class="text-white font-medium">Google Analytics</span>
+                                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 transition-colors">Connect</button>
+                              </div>
+                          </div>
+                      </div>
+                  
+                  <h3 class="text-2xl font-bold text-white mb-4 text-left border-b border-gray-700 pb-2">${title}</h3>
+                  
+    </script>
+  </body>
 </html>
